@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5597470758254377811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5597470758254377813}
+  - component: {fileID: 5597470758254377810}
+  - component: {fileID: -6116583994889800434}
+  m_Layer: 0
+  m_Name: CyberBuilding
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &5597470758254377813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5597470758254377811}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6, y: 4.08, z: -4.97}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5597470758254377810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5597470758254377811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb850a4023b52424bb4ab600277b4f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  height: 3
+  width: 3
+  depth: 3
+  pieceSize: 2
+  randomize: 0
+  generateOnUpdate: 0
+  seed: 0
+  floorPrefab: {fileID: 5664676959208458329, guid: 37d66da094f0e534dbf517a795d0bd4b,
+    type: 3}
+  prefabs:
+  - {fileID: 5701441176105485698, guid: d65de0708cc055c4ba91a88ee68d7604, type: 3}
+  - {fileID: 5748973368047410180, guid: 8dafe4ba255e25440b93a51734c19edb, type: 3}
+  - {fileID: 3031245229208894016, guid: ffb248c3af259874b85f95ad643fa834, type: 3}
+  materials:
+  - {fileID: 2100000, guid: c37ceadde82409848ae36f313ebe059f, type: 2}
+  - {fileID: 2100000, guid: ab335e1f8122afc4bb4364baac4770df, type: 2}
+  - {fileID: 2100000, guid: 6823cefca814b9d4c90576289bb1798a, type: 2}
+  - {fileID: 2100000, guid: b9af8337c4e06d449bfe14be924b8ecd, type: 2}
+  initialMaterial: {fileID: 2100000, guid: 6823cefca814b9d4c90576289bb1798a, type: 2}
+  finalMaterial: {fileID: 2100000, guid: 6823cefca814b9d4c90576289bb1798a, type: 2}
+--- !u!65 &-6116583994889800434
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5597470758254377811}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
