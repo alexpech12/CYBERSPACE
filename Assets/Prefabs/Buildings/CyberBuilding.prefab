@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5597470758254377813}
   - component: {fileID: 5597470758254377810}
   - component: {fileID: -6116583994889800434}
+  - component: {fileID: 9093321871500738028}
+  - component: {fileID: -3165191785600551934}
   m_Layer: 0
   m_Name: CyberBuilding
   m_TagString: Untagged
@@ -54,9 +56,9 @@ MonoBehaviour:
   floorPrefab: {fileID: 5664676959208458329, guid: 37d66da094f0e534dbf517a795d0bd4b,
     type: 3}
   prefabs:
-  - {fileID: 5701441176105485698, guid: d65de0708cc055c4ba91a88ee68d7604, type: 3}
-  - {fileID: 5748973368047410180, guid: 8dafe4ba255e25440b93a51734c19edb, type: 3}
-  - {fileID: 3031245229208894016, guid: ffb248c3af259874b85f95ad643fa834, type: 3}
+  - {fileID: 2628839887658760053, guid: 35c5a641c68225d43a2b9e6dcf0e7639, type: 3}
+  - {fileID: 2628839887658760053, guid: 35c5a641c68225d43a2b9e6dcf0e7639, type: 3}
+  - {fileID: 2628839887658760053, guid: 35c5a641c68225d43a2b9e6dcf0e7639, type: 3}
   materials:
   - {fileID: 2100000, guid: c37ceadde82409848ae36f313ebe059f, type: 2}
   - {fileID: 2100000, guid: ab335e1f8122afc4bb4364baac4770df, type: 2}
@@ -77,3 +79,48 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &9093321871500738028
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5597470758254377811}
+  m_Mesh: {fileID: 0}
+--- !u!23 &-3165191785600551934
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5597470758254377811}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0

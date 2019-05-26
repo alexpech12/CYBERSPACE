@@ -33,9 +33,16 @@ public class CyberBuildingFloor : MonoBehaviour, ICyberBlock
     bool coroutineRunning = true;
     bool inited = false;
 
+    bool stillBuilding = true;
+
     public void Init()
     {
         inited = true;
+    }
+
+    public bool StillBuilding()
+    {
+        return stillBuilding;
     }
 
     // Update is called once per frame
@@ -120,6 +127,7 @@ public class CyberBuildingFloor : MonoBehaviour, ICyberBlock
         pieces.Clear();
 
         coroutineRunning = false;
+        stillBuilding = false;
     }
 
     void CombineMeshes()

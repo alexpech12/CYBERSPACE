@@ -74,6 +74,12 @@ public class CityGenerator : MonoBehaviour
         {
             for (int x = min_x; x <= max_x; ++x)
             {
+                // Is this grid point actually in range? (Use circular distance)
+                if((player.position - new Vector3(x * blockSize, 0, y * blockSize)).sqrMagnitude > drawDistance*drawDistance)
+                {
+                    continue;
+                }
+
                 bool blockExists = false;
                 foreach (var block in blocks)
                 {
