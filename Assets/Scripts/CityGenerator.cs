@@ -55,7 +55,6 @@ public class CityGenerator : MonoBehaviour
         int min_x = Mathf.RoundToInt((playerPosition.x - drawDistance) / blockSize);
         int max_y = Mathf.RoundToInt((playerPosition.z + drawDistance) / blockSize);
         int min_y = Mathf.RoundToInt((playerPosition.z - drawDistance) / blockSize);
-        Debug.Log("X[" + min_x + "," + max_x + "], Y[" + min_y + "," + max_y + "]");
 
         foreach (var block in blocks)
         {
