@@ -1,6 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Jobs;
 using UnityEngine;
+
+//public class BuildJob : IJob
+//{
+//    void IJob.Execute()
+//    {
+        
+//    }
+//}
 
 public class CyberBuilding : MonoBehaviour, ICyberBlock
 {
@@ -20,6 +29,7 @@ public class CyberBuilding : MonoBehaviour, ICyberBlock
 
     public Material initialMaterial;
     public Material finalMaterial;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +39,11 @@ public class CyberBuilding : MonoBehaviour, ICyberBlock
         GetComponent<BoxCollider>().size = new Vector3(width * pieceSize, height * pieceSize, depth * pieceSize);
 
         GetComponent<MeshRenderer>().sharedMaterial = finalMaterial;
+
+        // Set up job
+        //BuildJob buildJob = new BuildJob();
+
+
     }
     bool coroutineRunning = true;
     bool coroutineDone = false;
@@ -36,12 +51,12 @@ public class CyberBuilding : MonoBehaviour, ICyberBlock
     // Update is called once per frame
     void Update()
     {
-        if (coroutineRunning)
-        {
-            coroutineRunning = false;
-            StartCoroutine("Generate");
-        }
-        StartCoroutine("Combine");
+        //if (coroutineRunning)
+        //{
+        //    coroutineRunning = false;
+        //    StartCoroutine("Generate");
+        //}
+        //StartCoroutine("Combine");
     }
 
     public IEnumerator Generate()

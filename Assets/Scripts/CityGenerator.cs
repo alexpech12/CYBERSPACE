@@ -1,6 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Jobs;
 using UnityEngine;
+using UnityEngine.Jobs;
+
+//public struct CityJob : IJobParallelForTransform
+//{
+//    void IJobParallelForTransform.Execute(int index, TransformAccess transform)
+//    {
+//        throw new System.NotImplementedException();
+//    }
+//}
 
 public interface ICyberBlock
 {
@@ -39,7 +49,7 @@ public class CityGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine("GenerateBlock");
+        //StartCoroutine("GenerateBlock");
     }
 
     IEnumerator GenerateBlock()
