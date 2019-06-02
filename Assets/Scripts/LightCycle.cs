@@ -63,7 +63,6 @@ public class LightCycle : MonoBehaviour
             mouseLook.UpdateCursorLock();
 
             // Get inputs
-            //int turning = 0; // -1 for left, 1 for right
             float acceleration = CrossPlatformInputManager.GetAxis("Vertical");
             float turning = CrossPlatformInputManager.GetAxis("Horizontal");
 
@@ -104,13 +103,7 @@ public class LightCycle : MonoBehaviour
 
             float turnAtSpeedFactor = currentSpeed > 0 ? ((1.2f*cycleMaxSpeed) - currentSpeed) / cycleMaxSpeed : 1;
 
-            //Vector3 currentTiltRot = cycle.GetChild(0).localRotation.eulerAngles;
-            //float currentTilt = currentTiltRot.z;
-            //float maxTilt = 20f;
-
-            //float newTilt = Mathf.Lerp(currentTilt, maxTilt*turning, 0.5f);
-            //Vector3 newTiltRot = new Vector3(currentTiltRot.x, currentTiltRot.y, newTilt);
-            //cycle.GetChild(0).localRotation = Quaternion.Euler(newTiltRot);
+			// TODO: Make bike tilt while turning
             
             cycle.Translate(cycle.transform.forward * currentSpeed * Time.deltaTime, Space.World);
             cycle.Rotate(Vector3.up, currentSpeed * turnAtSpeedFactor * turning * turnSpeed * Time.deltaTime);

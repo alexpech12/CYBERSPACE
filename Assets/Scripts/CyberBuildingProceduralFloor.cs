@@ -20,12 +20,8 @@ public struct MeshStepJob : IJob
     public NativeArray<Vector3> normals;
     public NativeArray<Vector2> uvs;
     public NativeArray<int> tris;
-    //MeshOutput res;
-
     void IJob.Execute()
     {
-        //res = new MeshOutput();
-
         // Shift the last two vertices along by size
         Vector3 v1 = vertices[vertices.Length - 2];
         Vector3 v2 = vertices[vertices.Length - 1];
@@ -33,7 +29,6 @@ public struct MeshStepJob : IJob
         v2 = v2 + size * currentDirection;
         vertices[vertices.Length - 2] = v1;
         vertices[vertices.Length - 1] = v2;
-        //res.vertices = vertices.ToArray();
 
         // Shift UV to prevent stretching
         Vector2 uv1 = uvs[uvs.Length - 2];
@@ -42,41 +37,7 @@ public struct MeshStepJob : IJob
         uv2 = new Vector2(uv2.x + 1, uv2.y);
         uvs[uvs.Length - 2] = uv1;
         uvs[uvs.Length - 1] = uv2;
-
-        //resultVertices.CopyFrom(vertices);
-        //resultUVs.CopyFrom(uvs);
-        //resultNormals.CopyFrom(normals);
-        //resultTriangles.CopyFrom(tris);
-        //res.uvs = uvs.ToArray();
-        //res.normals = normals.ToArray();
-        //res.tris = tris.ToArray();
-
-        //result[0] = res;
     }
-    
-    //void Shift()
-    //{
-    //    // Shift the last two vertices along by size
-    //    Vector3 v1 = vertices[vertices.Count - 2];
-    //    Vector3 v2 = vertices[vertices.Count - 1];
-    //    v1 = v1 + size * currentDirection;
-    //    v2 = v2 + size * currentDirection;
-    //    vertices[vertices.Count - 2] = v1;
-    //    vertices[vertices.Count - 1] = v2;
-    //    res.vertices = vertices;
-
-    //    // Shift UV to prevent stretching
-    //    Vector2 uv1 = uvs[uvs.Count - 2];
-    //    Vector2 uv2 = uvs[uvs.Count - 1];
-    //    uv1 = new Vector2(uv1.x + 1, uv1.y);
-    //    uv2 = new Vector2(uv2.x + 1, uv2.y);
-    //    uvs[uvs.Count - 2] = uv1;
-    //    uvs[uvs.Count - 1] = uv2;
-    //    res.uvs = uvs;
-
-    //    res.normals = normals;
-    //    res.tris = tris;
-    //}
 }
 
 public struct MeshTurnJob : IJob
@@ -87,14 +48,8 @@ public struct MeshTurnJob : IJob
     public NativeArray<Vector2> uvs;
     public NativeArray<int> tris;
 
-    //MeshOutput res;
-
     void IJob.Execute()
     {
-        //res = new MeshOutput();
-     
-        //Quaternion rot = Quaternion.Euler(0, -90, 0);
-        //currentDirection = rot * currentDirection;
 
         int index0 = vertices.Length - 4;
 
@@ -119,17 +74,6 @@ public struct MeshTurnJob : IJob
         normals[index0 + 2] = (rot * normals[index0]);
         normals[index0 + 3] = (rot * normals[index0 + 1]);
 
-        //res.vertices = vertices.ToArray();
-        //res.normals = normals.ToArray();
-        //res.uvs = uvs.ToArray();
-        //res.tris = tris.ToArray();
-
-        //result[0] = res;
-
-        //resultVertices.CopyFrom(vertices.ToArray());
-        //resultUVs.CopyFrom(uvs.ToArray());
-        //resultNormals.CopyFrom(normals.ToArray());
-        //resultTriangles.CopyFrom(tris.ToArray());
     }
 }
 
@@ -214,23 +158,7 @@ public class CyberBuildingProceduralFloor : MonoBehaviour
                 i_side = 0;
                 ++i_corner;
 
-                //TurnCorner(combinedMesh);
                 MeshTurnJob turnJob = new MeshTurnJob();
-                //turnJob.vertices = new List<Vector3>();
-                //turnJob.normals = new List<Vector3>();
-                //turnJob.uvs = new List<Vector2>();
-                //turnJob.tris = new List<int>();
-                //combinedMesh.GetVertices(turnJob.vertices);
-                //combinedMesh.GetNormals(turnJob.normals);
-                //combinedMesh.GetUVs(0, turnJob.uvs);
-                //combinedMesh.GetTriangles(turnJob.tris, 0);
-                //turnJob.currentDirection = currentDirection;
-
-                ////turnJob.result = new NativeArray<MeshOutput>(1, Allocator.TempJob);
-                //turnJob.resultVertices = new NativeArray<Vector3>(combinedMesh.vertices.Length, Allocator.TempJob);
-                //turnJob.resultNormals = new NativeArray<Vector3>(combinedMesh.normals.Length, Allocator.TempJob);
-                //turnJob.resultUVs = new NativeArray<Vector2>(combinedMesh.uv.Length, Allocator.TempJob);
-                //turnJob.resultTriangles = new NativeArray<int>(combinedMesh.triangles.Length, Allocator.TempJob);
 
                 List<Vector3> newVertices = new List<Vector3>();
                 combinedMesh.GetVertices(newVertices);
@@ -273,27 +201,14 @@ public class CyberBuildingProceduralFloor : MonoBehaviour
 
                 handle = turnJob.Schedule();
 
-                //Quaternion rot = Quaternion.Euler(0, -90, 0);
-                //currentDirection = rot * currentDirection;
             }
         }
         else
         {
             // Step along
-            //Shift(combinedMesh, 1.0f);
             MeshStepJob job = new MeshStepJob();
-            //job.vertices = combinedMesh.vertices;
-            //job.normals = combinedMesh.normals;
-            //job.uvs = combinedMesh.uv;
-            //job.tris = combinedMesh.triangles;
-            //combinedMesh.GetVertices(job.vertices);
-            //combinedMesh.GetNormals(job.normals);
-            //combinedMesh.GetUVs(0, job.uvs);
-            //combinedMesh.GetTriangles(job.tris, 0);
             job.currentDirection = currentDirection;
             job.size = size;
-
-            //job.result = new NativeArray<MeshOutput>(1, Allocator.TempJob);
 
             vertices = new NativeArray<Vector3>(combinedMesh.vertices, Allocator.TempJob);
             normals = new NativeArray<Vector3>(combinedMesh.normals, Allocator.TempJob);
@@ -311,67 +226,6 @@ public class CyberBuildingProceduralFloor : MonoBehaviour
         }
 
 
-        
-
-
-        //else
-        //{
-
-        //    if (!handle.IsCompleted) return;
-
-        //    // Get result
-        //    handle.Complete();
-
-        //    combinedMesh = new Mesh();
-        //    combinedMesh.SetVertices(result[0].vertices);
-        //    combinedMesh.SetNormals(result[0].normals);
-        //    combinedMesh.SetUVs(0, result[0].uvs);
-        //    combinedMesh.SetTriangles(result[0].tris, 0);
-
-
-        //    result.Dispose();
-        //}
-
-        //// Set mesh
-
-        //GetComponent<MeshFilter>().mesh = combinedMesh;
-
-        //if (!started)
-        //{
-        //    // Do init
-        //    combinedMesh = MakePlane(1.0f, Vector3.right);
-        //    i_side = 1;
-        //    started = true;
-        //}
-        //else
-        //{
-        //    // Do step
-        //    if(i_corner % 2 == 0 ? i_side == width : i_side == length)
-        //    {
-        //        if (i_corner == 3)
-        //        {
-        //            // We are done
-        //            complete = true;
-        //        }
-        //        else
-        //        {
-
-        //            // Turn corner
-        //            i_side = 0;
-        //            ++i_corner;
-
-        //            TurnCorner(combinedMesh);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        // Step along
-        //        Shift(combinedMesh, 1.0f);
-        //        ++i_side;
-        //    }
-        //}
-
-        //GetComponent<MeshFilter>().mesh = combinedMesh;
     }
 
     Mesh MakePlane(float size, Vector3 normal)

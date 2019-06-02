@@ -3,14 +3,6 @@ using System.Collections.Generic;
 using Unity.Jobs;
 using UnityEngine;
 
-//public class BuildJob : IJob
-//{
-//    void IJob.Execute()
-//    {
-        
-//    }
-//}
-
 public class CyberBuilding : MonoBehaviour, ICyberBlock
 {
     public int height = 3;
@@ -40,10 +32,6 @@ public class CyberBuilding : MonoBehaviour, ICyberBlock
 
         GetComponent<MeshRenderer>().sharedMaterial = finalMaterial;
 
-        // Set up job
-        //BuildJob buildJob = new BuildJob();
-
-
     }
     bool coroutineRunning = true;
     bool coroutineDone = false;
@@ -51,12 +39,12 @@ public class CyberBuilding : MonoBehaviour, ICyberBlock
     // Update is called once per frame
     void Update()
     {
-        //if (coroutineRunning)
-        //{
-        //    coroutineRunning = false;
-        //    StartCoroutine("Generate");
-        //}
-        //StartCoroutine("Combine");
+        if (coroutineRunning)
+        {
+           coroutineRunning = false;
+           StartCoroutine("Generate");
+        }
+        StartCoroutine("Combine");
     }
 
     public IEnumerator Generate()
@@ -73,7 +61,6 @@ public class CyberBuilding : MonoBehaviour, ICyberBlock
 
         for(int h = 0; h < height; ++h)
         {
-            //int heightScale = Random.Range(1, 10);
             int heightScale = 1;
 
             Vector3 scale = new Vector3(1, heightScale, 1);
@@ -90,10 +77,6 @@ public class CyberBuilding : MonoBehaviour, ICyberBlock
             floor.Init();
             
             h += heightScale-1;
-            //while (floor.StillBuilding())
-            //{
-            //   yield return null;// new WaitForSeconds(0.2f);
-            //}
             yield return null;
         }
         coroutineRunning = false;
@@ -117,11 +100,10 @@ public class CyberBuilding : MonoBehaviour, ICyberBlock
                 CombineInstance newCombineInstance = new CombineInstance();
                 newCombineInstance.mesh = floorMeshFilter.sharedMesh;
                 newCombineInstance.transform = floorMeshFilter.transform.localToWorldMatrix;
-                //floorMeshFilter.gameObject.SetActive(false);
+				
                 combine.Add(newCombineInstance);
                 // Delete floor object
                 Destroy(floorMeshFilter.gameObject);
-                // TODO
             }
         }
 
